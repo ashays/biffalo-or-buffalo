@@ -1,0 +1,25 @@
+<template name="main">
+	<h1>Social Trivia Game</h1>
+	{{> yield}}
+</template>
+
+<template name="landing">
+	<div class="button" id="create_game">Create Game</div>
+	<div class="button" id="join_game">Join Game</div>
+</template>
+
+<template name="game">
+	<h1>Game Created</h1>
+	{{_id}} + {{createdAt}}
+	<div class="button">Start</div>
+</template>
+
+<template name="login">
+    {{#if currentUser}}
+        {{currentUser.services.facebook.name}} -
+        {{currentUser.services.facebook.gender}}
+        <button id="logout">Logout</button>
+    {{else}}
+        <button id="facebook-login" class="btn btn-default"> Login with Facebook</button>
+    {{/if}}
+</template>
