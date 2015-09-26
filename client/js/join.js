@@ -21,8 +21,8 @@
   Template.join.events({
       "submit #join-game": function (event) {
         event.preventDefault();
-        var gameToJoin = event.target.gameid.value;
-        if (Games.findOne({_id: gameToJoin})) {
+        var gameToJoin = Number(event.target.gameid.value);
+        if (Games.findOne({newId: gameToJoin})) {
           if (Players.findOne({pID: Meteor.user()._id})) {
             var id = Players.findOne({pID: Meteor.user()._id})._id;
             Players.update(id, {
