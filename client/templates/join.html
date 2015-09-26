@@ -1,0 +1,22 @@
+<template name="login">
+    {{#if currentUser}}
+        {{currentUser.services.facebook.name}} -
+        {{currentUser.services.facebook.gender}}
+        <button id="logout">Logout</button>
+    {{else}}
+        <button id="facebook-login" class="btn btn-default"> Login with Facebook</button>
+    {{/if}}
+</template>
+
+<template name="join">
+	<p>Enter game id</p>
+	<form id="join-game">
+        <input type="text" name="gameid" placeholder="Enter game id" />
+	</form>
+</template>
+
+<template name="pregame">
+	<p>Game joined</p>
+	{{currentUser.services.facebook.name}} -
+	{{currentUser.services.facebook.gender}}
+</template>

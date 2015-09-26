@@ -1,21 +1,3 @@
-if (Meteor.isClient) {
-
-  Template.landing.events({
-    'click #create_game': function () {
-      event.preventDefault();
-      var id = Games.insert({
-        createdAt: new Date()
-      });
-
-      Router.go('/game/' + id);
-    },
-
-    'click #join_game': function () {
-      event.preventDefault();
-      Router.go('/login/');
-    }
-  });
-
   Template.login.events({
       'click #facebook-login': function(event) {
           Meteor.loginWithFacebook({}, function(err){
@@ -60,10 +42,3 @@ if (Meteor.isClient) {
         }
       }
     });
-
-  Template.game.helpers({
-      players: function () {
-        return Players.find({gameID: this._id});
-      }
-    });
-}
