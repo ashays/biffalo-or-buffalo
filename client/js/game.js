@@ -16,7 +16,7 @@
       	gameID: this._id,
         createdAt: new Date(), 
         questionID: array[randomIndex]._id,
-        playersAns: 0
+        playersNotAns: Players.find({gameID: this.newId}).count()
       });
       Games.update(this._id, {
         $set: {
@@ -24,6 +24,6 @@
         	gameStarted: true
         }
       });
-    Router.go('/question/' + array[randomIndex]._id);
+    Router.go('/question/' + this._id);
  }
 });

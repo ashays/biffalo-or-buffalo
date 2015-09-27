@@ -3,35 +3,27 @@
 	<ul class="answerChoices">
 		{{#if randoNum}}
 			{{#if randoNum2}}
-				<ul>
 					<li><div class="right button">{{rightAnswer}}</div></li>
 					<li><div class="wrong button">{{wrongAnswer1}}</div></li>
 					<li><div class="wrong button">{{wrongAnswer2}}</div></li>
 					<li><div class="wrong button">{{wrongAnswer3}}</div></li>
-				</ul>
 			{{else}}
-				<ul>
 					<li><div class="wrong button">{{wrongAnswer1}}</div></li>
 					<li><div class="right button">{{rightAnswer}}</div></li>
 					<li><div class="wrong button">{{wrongAnswer2}}</div></li>
 					<li><div class="wrong button">{{wrongAnswer3}}</div></li>
-				</ul>
 			{{/if}}
 		{{else}}
 			{{#if randoNum2}}
-				<ul>
 					<li><div class="wrong button">{{wrongAnswer2}}</div></li>
 					<li><div class="wrong button">{{wrongAnswer1}}</div></li>
 					<li><div class="right button">{{rightAnswer}}</div></li>
 					<li><div class="wrong button">{{wrongAnswer3}}</div></li>
-				</ul>
 			{{else}}
-				<ul>
 					<li><div class="wrong button">{{wrongAnswer3}}</div></li>
 					<li><div class="wrong button">{{wrongAnswer1}}</div></li>
 					<li><div class="wrong button">{{wrongAnswer2}}</div></li>
 					<li><div class="right button">{{rightAnswer}}</div></li>
-				</ul>
 			{{/if}}
 		{{/if}}
 		</ul>

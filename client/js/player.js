@@ -23,12 +23,55 @@
     });
 
   Template.player.events({
-  'click .right': function () {
-      event.preventDefault();
-      Players.update(Meteor.user()._id, {
+  'click .right.button': function () {
+      Session.set("answer", $(event.target).hasClass("right"));
+      // Updating score
+      var scoreNew = Players.find({pID: Meteor.user()._id}).fetch()[0].score;
+      if (isNaN(scoreNew)) { scoreNew = 15; }
+      else { scoreNew += 15; }
+      Players.update(Players.find({pID: Meteor.user()._id}).fetch()[0]._id, {
         $set: {
-          score: this.score + 15
+          score: scoreNew
         }
       })
+      // No more clicking
+      $('.button').removeClass("button");
+      $(event.target).addClass("selectedChoice");
+      // Decerement number of players who need to answer
+      var newNotAns = Rounds.find(Games.find({newId: Players.find({pID: Meteor.user()._id}).fetch()[0].gameID}).fetch()[0].roundID).fetch()[0].playersNotAns;
+      newNotAns--;
+      Rounds.update(Games.find({newId: Players.find({pID: Meteor.user()._id}).fetch()[0].gameID}).fetch()[0].roundID, {
+        $set: {
+          playersNotAns: newNotAns
+        }
+      })
+      if (newNotAns == 0) {
+        Games.update(Games.find({newId: Players.find({pID: Meteor.user()._id}).fetch()[0].gameID}).fetch()[0]._id, {
+          $set: {
+            scoreboardState: true
+          }
+        });
+      }
+    },
+    'click .wrong.button': function () {
+      Session.set("answer", $(event.target).hasClass("right"));
+      $('.button').removeClass("button");
+      $(event.target).addClass("selectedChoice");
+      var newNotAns = Rounds.find(Games.find({newId: Players.find({pID: Meteor.user()._id}).fetch()[0].gameID}).fetch()[0].roundID).fetch()[0].playersNotAns;
+      newNotAns--;
+      Rounds.update(Games.find({newId: Players.find({pID: Meteor.user()._id}).fetch()[0].gameID}).fetch()[0].roundID, {
+        $set: {
+          playersNotAns: newNotAns
+        }
+      })
+      console.log(newNotAns == 0);
+      if (newNotAns == 0) {
+        Games.update(Games.find({newId: Players.find({pID: Meteor.user()._id}).fetch()[0].gameID}).fetch()[0]._id, {
+          $set: {
+            scoreboardState: true
+          }
+        });
+      }
+      console.log("GENERAL ANSEWR FINISHD");
     }
   });

@@ -1,11 +1,9 @@
-<template name = "transition">
+<template name="transition">
 	<h1>Good round guys!</h1>
-	<ul>
+	<ul class="players">
 		{{#each players}}
 	    	<li>{{name}} : {{score}}</li>
 	    {{/each}}
 	</ul>
-	{{#if isGo}}
-		<div class="button" id="nextButton">Next Question</div>
-	{{/if}}
+	<div class="button" id="nextButton">Next Question</div>
 </template>
