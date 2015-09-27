@@ -2,33 +2,33 @@
 	<h1>{{name}}</h1>
 		{{#if randoNum1}}
 			<ul>
-				<li>{{rightAnswer}}</li>
-				<li>{{wrongAnswer1}}</li>
-				<li>{{wrongAnswer2}}</li>
-				<li>{{wrongAnswer3}}</li>
+				<li><div class="right button">{{rightAnswer}}</div></li>
+				<li><div class="wrong button">{{wrongAnswer1}}</div></li>
+				<li><div class="wrong button">{{wrongAnswer2}}</div></li>
+				<li><div class="wrong button">{{wrongAnswer3}}</div></li>
 			</ul>
 		{{/if}}
 		{{#if randoNum2}}
 			<ul>
-				<li>{{wrongAnwer1}}</li>
-				<li>{{rightAnswer}}</li>
-				<li>{{wrongAnswer2}}</li>
-				<li>{{wrongAnswer3}}</li>
+				<li><div class="wrong button">{{wrongAnswer1}}</div></li>
+				<li><div class="right button">{{rightAnswer}}</div></li>
+				<li><div class="wrong button">{{wrongAnswer2}}</div></li>
+				<li><div class="wrong button">{{wrongAnswer3}}</div></li>
 			</ul>
 		{{/if}}
 		{{#if randoNum3}}
 			<ul>
-				<li>{{wrongAnswer1}}</li>
-				<li>{{wrongAnswer2}}</li>
-				<li>{{rightAnswer}}</li>
-				<li>{{wrongAnswer3}}</li>
+				<li><div class="wrong button">{{wrongAnswer2}}</div></li>
+				<li><div class="wrong button">{{wrongAnswer1}}</div></li>
+				<li><div class="right button">{{rightAnswer}}</div></li>
+				<li><div class="wrong button">{{wrongAnswer3}}</div></li>
 			</ul>
 		{{else}}
 			<ul>
-				<li>{{wrongAnswer1}}</li>
-				<li>{{wrongAnswer2}}</li>
-				<li>{{wrongAnswer3}}</li>
-				<li>{{rightAnswer}}</li>
+				<li><div class="wrong button">{{wrongAnswer3}}</div></li>
+				<li><div class="wrong button">{{wrongAnswer1}}</div></li>
+				<li><div class="wrong button">{{wrongAnswer2}}</div></li>
+				<li><div class="right button">{{rightAnswer}}</div></li>
 			</ul>
 		{{/if}}
 
