@@ -1,0 +1,35 @@
+<template name="player">
+	<h1>{{name}}</h1>
+		{{#if randoNum1}}
+			<ul>
+				<li>{{rightAnswer}}</li>
+				<li>{{wrongAnswer1}}</li>
+				<li>{{wrongAnswer2}}</li>
+				<li>{{wrongAnswer3}}</li>
+			</ul>
+		{{/if}}
+		{{#if randoNum2}}
+			<ul>
+				<li>{{wrongAnwer1}}</li>
+				<li>{{rightAnswer}}</li>
+				<li>{{wrongAnswer2}}</li>
+				<li>{{wrongAnswer3}}</li>
+			</ul>
+		{{/if}}
+		{{#if randoNum3}}
+			<ul>
+				<li>{{wrongAnswer1}}</li>
+				<li>{{wrongAnswer2}}</li>
+				<li>{{rightAnswer}}</li>
+				<li>{{wrongAnswer3}}</li>
+			</ul>
+		{{else}}
+			<ul>
+				<li>{{wrongAnswer1}}</li>
+				<li>{{wrongAnswer2}}</li>
+				<li>{{wrongAnswer3}}</li>
+				<li>{{rightAnswer}}</li>
+			</ul>
+		{{/if}}
+
+</template>
