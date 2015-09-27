@@ -34,7 +34,8 @@
                     gameID: gameToJoin,
                     name: Meteor.user().profile.name,
                     createdAt: new Date(), // current time
-                    score : 0
+                    score : 0,
+                    profilePic: "http://graph.facebook.com/" + Meteor.user().services.facebook.id + "/picture/?type=large"
                   });            
           }
           Router.go('/joined/' + gameToJoin);
@@ -43,3 +44,9 @@
         }
       }
     });
+
+  Template.join.helpers({
+      profilePic: function() {
+        return "http://graph.facebook.com/" + Meteor.user().services.facebook.id + "/picture/?type=large";
+      }
+  });

@@ -108,3 +108,20 @@ ul.answerChoices {
 	list-style: none;
 	padding: 0;
 }
+
+img.profilePic {
+    height: 100px;
+    border-radius: 50%;
+}
+
+.list.profilePic {
+    height: 50px;
+}
+
+span.players {
+    display: inline-block;
+    height: 50px;
+    vertical-align: top;
+    line-height: 50px;
+    margin-left: 20px;
+}
