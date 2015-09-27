@@ -21,3 +21,14 @@
         }
       }
     });
+
+  Template.player.events({
+  'click .right': function () {
+      event.preventDefault();
+      Players.update(Meteor.user()._id, {
+        $set: {
+          score: this.score + 15
+        }
+      })
+    }
+  });

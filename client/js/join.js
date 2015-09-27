@@ -26,14 +26,15 @@
           if (Players.findOne({pID: Meteor.user()._id})) {
             var id = Players.findOne({pID: Meteor.user()._id})._id;
             Players.update(id, {
-                    $set: {gameID: gameToJoin}
+                    $set: {gameID: gameToJoin, score : 0}
                   });
           } else {
             Players.insert({
                     pID: Meteor.user()._id,
                     gameID: gameToJoin,
                     name: Meteor.user().profile.name,
-                    createdAt: new Date() // current time
+                    createdAt: new Date(), // current time
+                    score : 0
                   });            
           }
           Router.go('/joined/' + gameToJoin);
