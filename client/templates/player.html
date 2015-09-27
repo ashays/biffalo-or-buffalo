@@ -1,29 +1,38 @@
 <template name="player">
 	<h1>{{question}}</h1>
 	<ul class="answerChoices">
-		{{#if randoNum1}}
-				<li><div class="right button">{{rightAnswer}}</div></li>
-				<li><div class="wrong button">{{wrongAnswer1}}</div></li>
-				<li><div class="wrong button">{{wrongAnswer2}}</div></li>
-				<li><div class="wrong button">{{wrongAnswer3}}</div></li>
-		{{/if}}
-		{{#if randoNum2}}
-				<li><div class="wrong button">{{wrongAnswer1}}</div></li>
-				<li><div class="right button">{{rightAnswer}}</div></li>
-				<li><div class="wrong button">{{wrongAnswer2}}</div></li>
-				<li><div class="wrong button">{{wrongAnswer3}}</div></li>
-		{{/if}}
-		{{#if randoNum3}}
-				<li><div class="wrong button">{{wrongAnswer2}}</div></li>
-				<li><div class="wrong button">{{wrongAnswer1}}</div></li>
-				<li><div class="right button">{{rightAnswer}}</div></li>
-				<li><div class="wrong button">{{wrongAnswer3}}</div></li>
+		{{#if randoNum}}
+			{{#if randoNum2}}
+				<ul>
+					<li><div class="right button">{{rightAnswer}}</div></li>
+					<li><div class="wrong button">{{wrongAnswer1}}</div></li>
+					<li><div class="wrong button">{{wrongAnswer2}}</div></li>
+					<li><div class="wrong button">{{wrongAnswer3}}</div></li>
+				</ul>
+			{{else}}
+				<ul>
+					<li><div class="wrong button">{{wrongAnswer1}}</div></li>
+					<li><div class="right button">{{rightAnswer}}</div></li>
+					<li><div class="wrong button">{{wrongAnswer2}}</div></li>
+					<li><div class="wrong button">{{wrongAnswer3}}</div></li>
+				</ul>
+			{{/if}}
 		{{else}}
-				<li><div class="wrong button">{{wrongAnswer3}}</div></li>
-				<li><div class="wrong button">{{wrongAnswer1}}</div></li>
-				<li><div class="wrong button">{{wrongAnswer2}}</div></li>
-				<li><div class="right button">{{rightAnswer}}</div></li>
+			{{#if randoNum2}}
+				<ul>
+					<li><div class="wrong button">{{wrongAnswer2}}</div></li>
+					<li><div class="wrong button">{{wrongAnswer1}}</div></li>
+					<li><div class="right button">{{rightAnswer}}</div></li>
+					<li><div class="wrong button">{{wrongAnswer3}}</div></li>
+				</ul>
+			{{else}}
+				<ul>
+					<li><div class="wrong button">{{wrongAnswer3}}</div></li>
+					<li><div class="wrong button">{{wrongAnswer1}}</div></li>
+					<li><div class="wrong button">{{wrongAnswer2}}</div></li>
+					<li><div class="right button">{{rightAnswer}}</div></li>
+				</ul>
+			{{/if}}
 		{{/if}}
 		</ul>
-
 </template>
