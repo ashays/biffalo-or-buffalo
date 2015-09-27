@@ -1,35 +1,29 @@
 <template name="player">
-	<h1>{{name}}</h1>
+	<h1>{{question}}</h1>
+	<ul class="answerChoices">
 		{{#if randoNum1}}
-			<ul>
 				<li><div class="right button">{{rightAnswer}}</div></li>
 				<li><div class="wrong button">{{wrongAnswer1}}</div></li>
 				<li><div class="wrong button">{{wrongAnswer2}}</div></li>
 				<li><div class="wrong button">{{wrongAnswer3}}</div></li>
-			</ul>
 		{{/if}}
 		{{#if randoNum2}}
-			<ul>
 				<li><div class="wrong button">{{wrongAnswer1}}</div></li>
 				<li><div class="right button">{{rightAnswer}}</div></li>
 				<li><div class="wrong button">{{wrongAnswer2}}</div></li>
 				<li><div class="wrong button">{{wrongAnswer3}}</div></li>
-			</ul>
 		{{/if}}
 		{{#if randoNum3}}
-			<ul>
 				<li><div class="wrong button">{{wrongAnswer2}}</div></li>
 				<li><div class="wrong button">{{wrongAnswer1}}</div></li>
 				<li><div class="right button">{{rightAnswer}}</div></li>
 				<li><div class="wrong button">{{wrongAnswer3}}</div></li>
-			</ul>
 		{{else}}
-			<ul>
 				<li><div class="wrong button">{{wrongAnswer3}}</div></li>
 				<li><div class="wrong button">{{wrongAnswer1}}</div></li>
 				<li><div class="wrong button">{{wrongAnswer2}}</div></li>
 				<li><div class="right button">{{rightAnswer}}</div></li>
-			</ul>
 		{{/if}}
+		</ul>
 
 </template>
