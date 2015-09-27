@@ -36,7 +36,7 @@
                     createdAt: new Date() // current time
                   });            
           }
-          Router.go('/joined/');          
+          Router.go('/joined/' + gameToJoin);
         } else {
           console.log("error");
         }
