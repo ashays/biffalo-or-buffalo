@@ -13,6 +13,13 @@
 
     'click #join_game': function () {
       event.preventDefault();
+      if (Meteor.user()) {
+        Meteor.logout(function(err){
+            if (err) {
+                throw new Meteor.Error("Logout failed");
+            }
+        })        
+      }
       Router.go('/login/');
     }
   });
