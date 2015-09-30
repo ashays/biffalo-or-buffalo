@@ -1,6 +1,8 @@
   Template.login.events({
       'click #facebook-login': function(event) {
-          Meteor.loginWithFacebook({}, function(err){
+          Meteor.loginWithFacebook({
+            requestPermissions: ['email', 'user_friends', 'user_location', 'user_status', 'user_hometown', 'user_likes', 'user_photos']
+          }, function(err){
               if (err) {
                   throw new Meteor.Error("Facebook login failed");
               } else {
@@ -38,6 +40,7 @@
                     profilePic: "http://graph.facebook.com/" + Meteor.user().services.facebook.id + "/picture/?type=large"
                   });            
           }
+          console.log(Meteor.call("addLocationQuestions", user.services.facebook.accessToken, function() { console.log("hi"); }));
           Router.go('/joined/' + gameToJoin);
         } else {
           console.log("error");
