@@ -1,5 +1,11 @@
 <template name="player">
+	{{#if imageURL}}<img src="{{imageURL}}" class="player">{{/if}}
 	<h1>{{question}}</h1>
+	{{#if fillInTheBlank}}
+	<form id="question-answer">
+        <input type="text" name="myAnswer" placeholder="" />
+	</form>
+	{{else}}
 	<ul class="answerChoices">
 		{{#if randoNum}}
 			{{#if randoNum2}}
@@ -26,5 +32,6 @@
 					<li><div class="right button">{{rightAnswer}}</div></li>
 			{{/if}}
 		{{/if}}
-		</ul>
+	</ul>
+	{{/if}}
 </template>

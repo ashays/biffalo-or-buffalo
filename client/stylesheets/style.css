@@ -76,7 +76,7 @@ span.id {
     font-weight: bold;
 }
 
-#join-game input {
+#join-game input, #question-answer input {
     padding: 10px;
     font-size: 40px;
     width: 225px;
@@ -85,6 +85,11 @@ span.id {
     color: #fff;
     text-align: center;
     border-radius: 10px;
+}
+
+#question-answer input {
+    width: 90%;
+    font-size: 30px;
 }
 
 ul.players {
@@ -117,7 +122,15 @@ img.profilePic {
 img.question {
   height: 350px;
   margin-top: -50px;
-  }
+  box-shadow: 0 0 5px rgba(0,0,0,.5);
+}
+
+img.player {
+  max-height: 200px;
+  max-width: 90%;
+  margin-top: -50px;
+  box-shadow: 0 0 5px rgba(0,0,0,.5);
+}
 
 .list.profilePic {
     height: 50px;

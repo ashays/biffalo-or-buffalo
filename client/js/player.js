@@ -19,6 +19,14 @@
           randoNum2 = true;
           return randoNum2;
         }
+      },
+
+      fillInTheBlank: function() {
+        if (this.questionType === "multipleChoice") {
+          return false;
+        } else {
+          return true;
+        }
       }
     });
 
@@ -73,5 +81,39 @@
         });
       }
       console.log("GENERAL ANSEWR FINISHD");
+    },
+    "submit #question-answer": function (event) {
+      event.preventDefault();
+      $('#question-answer input').prop("readonly", true);
+      console.log(this.rightAnswer.toLowerCase());
+      if ($('#question-answer input').val().toLowerCase() === this.rightAnswer.toLowerCase()) {
+        Session.set("answer", true);
+        var scoreNew = Players.find({pID: Meteor.user()._id}).fetch()[0].score;
+        if (isNaN(scoreNew)) { scoreNew = 15; }
+        else { scoreNew += 15; }
+        Players.update(Players.find({pID: Meteor.user()._id}).fetch()[0]._id, {
+          $set: {
+            score: scoreNew
+          }
+        })
+      } else {
+        Session.set("answer", false);
+      }
+      // Decerement number of players who need to answer
+      var newNotAns = Rounds.find(Games.find({newId: Players.find({pID: Meteor.user()._id}).fetch()[0].gameID}).fetch()[0].roundID).fetch()[0].playersNotAns;
+      newNotAns--;
+      Rounds.update(Games.find({newId: Players.find({pID: Meteor.user()._id}).fetch()[0].gameID}).fetch()[0].roundID, {
+        $set: {
+          playersNotAns: newNotAns
+        }
+      })
+      if (newNotAns == 0) {
+        Games.update(Games.find({newId: Players.find({pID: Meteor.user()._id}).fetch()[0].gameID}).fetch()[0]._id, {
+          $set: {
+            scoreboardState: true
+          }
+        });
+      }      
     }
+
   });
