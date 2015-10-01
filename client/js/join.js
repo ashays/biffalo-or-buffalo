@@ -1,7 +1,7 @@
   Template.login.events({
       'click #facebook-login': function(event) {
           Meteor.loginWithFacebook({
-            requestPermissions: ['email', 'user_friends', 'user_location', 'user_status', 'user_hometown', 'user_likes', 'user_photos']
+            requestPermissions: ['email', 'user_friends', 'user_location', 'user_status', 'user_hometown', 'user_likes', 'user_photos', 'user_birthday']
           }, function(err){
               if (err) {
                   throw new Meteor.Error("Facebook login failed");
@@ -40,8 +40,26 @@
                     profilePic: "http://graph.facebook.com/" + Meteor.user().services.facebook.id + "/picture/?type=large"
                   });            
           }
-          console.log(Meteor.call("addLocationQuestions", user.services.facebook.accessToken, function() { console.log("hi"); }));
-          Router.go('/joined/' + gameToJoin);
+          // Meteor.call("addLocationQuestions", Meteor.user().services.facebook.accessToken);
+          var myPhotoPlaces = FacebookCollections.getPhotos("me",["place"],100);
+          console.log(myPhotoPlaces.find().fetch().length);
+          function createPhotoLocationQuestions() {
+            console.log(myPhotoPlaces.find().fetch().length);
+            for (var i = 0; i < myPhotoPlaces.find().fetch().length; i++) {
+              if (myPhotoPlaces.find().fetch()[i].place != undefined) {
+                console.log(myPhotoPlaces.find().fetch()[i].place);
+                var largerPic = "https://graph.facebook.com/" + myPhotoPlaces.find().fetch()[i].id + "/picture?type=normal&access_token=" + Meteor.user().services.facebook.accessToken;
+                Questions.insert({
+                  question: "Name the location!",
+                  imageURL: largerPic,
+                  questionType: "photoLocation",
+                  rightAnswer: myPhotoPlaces.find().fetch()[i].place.name
+                });
+              }
+            }
+            Router.go('/joined/' + gameToJoin);
+          }
+          setTimeout(createPhotoLocationQuestions, 500);
         } else {
           console.log("error");
         }

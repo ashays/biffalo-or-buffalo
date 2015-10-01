@@ -114,6 +114,11 @@ img.profilePic {
     border-radius: 50%;
 }
 
+img.question {
+  height: 350px;
+  margin-top: -50px;
+  }
+
 .list.profilePic {
     height: 50px;
 }
