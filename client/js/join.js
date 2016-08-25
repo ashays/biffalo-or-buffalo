@@ -1,7 +1,7 @@
   Template.login.events({
       'click #facebook-login': function(event) {
           Meteor.loginWithFacebook({
-            requestPermissions: ['email', 'user_friends', 'user_location', 'user_status', 'user_hometown', 'user_likes', 'user_photos', 'user_birthday']
+            requestPermissions: ['email', 'user_friends', 'user_location', 'user_status', 'user_hometown', 'user_likes', 'user_photos', 'user_birthday','user_education_history']
           }, function(err){
               if (err) {
                   throw new Meteor.Error("Facebook login failed");
@@ -53,7 +53,8 @@
                   question: "Name the location!",
                   imageURL: largerPic,
                   questionType: "photoLocation",
-                  rightAnswer: myPhotoPlaces.find().fetch()[i].place.name
+                  rightAnswer: myPhotoPlaces.find().fetch()[i].place.name,
+                  playerQ: Meteor.user()._id
                 });
               }
             }
